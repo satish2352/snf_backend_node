@@ -7,7 +7,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1:27017/SNF_Project")
+mongoose.connect("mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/SNF_backend")
     .then(() => {
         console.log("connet to database successfully")
     })

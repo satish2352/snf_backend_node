@@ -5,7 +5,7 @@ const upload = require('../multer');
 // Express middleware to handle file uploads
 const postHome_Media = (req, res) => {
   const newItem = new Home_Media({
-    wa: req.body.name,
+    name: req.body.name,
     imageUrl: req.file.filename
   });
   newItem.save();
