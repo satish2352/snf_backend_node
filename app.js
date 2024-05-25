@@ -6,14 +6,19 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
+const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/snf_backend?retryWrites=true&w=majority';
 
-mongoose.connect("mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/snf_backend?retryWrites=true&w=majority")
+mongoose.connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 30000 // Increase timeout to 30 seconds
+})
     .then(() => {
-        console.log("connet to database successfully")
+        console.log('Connected to database successfully');
     })
     .catch((err) => {
-        console.log(err)
-    })
+        console.error('Error connecting to database:', err);
+    });
 app.use(express.json());
 // Serve uploaded images
 app.use('/uploads', express.static('uploads'));
