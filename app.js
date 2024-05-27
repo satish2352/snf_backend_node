@@ -10,7 +10,7 @@ const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mon
 mongoose.connect('mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/snf_backend', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000 // Optional: Increase server selection timeout
+    serverSelectionTimeoutMS: 500000 // Optional: Increase server selection timeout
 }).then(() => {
     console.log('Database connection successful');
 }).catch(err => {
