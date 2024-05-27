@@ -8,11 +8,13 @@ const app = express();
 app.use(cors());
 const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/snf_backend';
 mongoose.connect('mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/snf_backend', {
-  serverSelectionTimeoutMS: 30000 // Optional: Increase server selection timeout
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 30000 // Optional: Increase server selection timeout
 }).then(() => {
-  console.log('Database connection successful');
+    console.log('Database connection successful');
 }).catch(err => {
-  console.error('Database connection error:', err);
+    console.error('Database connection error:', err);
 });
 // mongoose.connect(mongoURI, {
 //     useNewUrlParser: true,
