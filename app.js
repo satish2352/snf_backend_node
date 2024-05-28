@@ -2,17 +2,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-mongoose.set('debug', true);
 
 
 const app = express();
 app.use(cors());
 const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 mongoose.connect(mongoURI, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-    socketTimeoutMS: 45000,   // Increase socket timeout to 45 seconds
-
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
     serverSelectionTimeoutMS: 30000 // Increase timeout to 30 seconds
 })
     .then(() => {
