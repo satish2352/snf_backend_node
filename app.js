@@ -10,6 +10,8 @@ const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mon
 mongoose.connect(mongoURI, {
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
+    socketTimeoutMS: 45000,   // Increase socket timeout to 45 seconds
+
     serverSelectionTimeoutMS: 30000 // Increase timeout to 30 seconds
 })
     .then(() => {
