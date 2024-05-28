@@ -6,7 +6,8 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/'
+// const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
