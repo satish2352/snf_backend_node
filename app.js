@@ -25,7 +25,6 @@ app.use('/uploads', express.static('uploads'));
 // Use routes from route.js
 //login 
 const LoginRouter = require("./route/login_route")
-
 app.use('/login', LoginRouter)
 //contact page
 const contactRouter = require("./route/contact-data_route");
