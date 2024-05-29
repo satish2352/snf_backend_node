@@ -14,6 +14,6 @@ const mongoose = require('mongoose');
         },
       });
 
-const userModel = mongoose.model('login_model', userSchema);
+const userModel = mongoose.model('login', userSchema);
 
 module.exports = userModel;
