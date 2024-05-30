@@ -44,7 +44,7 @@ mongoose.connect(mongoURI, {
 // connectToDatabase();
 app.use(express.json());
 
-app.get('/one', (req, res) => {
+app.get('/', (req, res) => {
     res.send('running on localhost 8000');
 });
 // Serve uploaded images
