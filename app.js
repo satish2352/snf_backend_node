@@ -13,9 +13,11 @@ const mongoURI = process.env.MONGO_URI;
 // const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/'
 // const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 mongoose.connect(mongoURI, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 90000 // Increase timeout to 30 seconds
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 100000, // Increase timeout to 90 seconds
+    socketTimeoutMS: 0, // No socket timeout
+    connectTimeoutMS: 0, // No connection timeout
 })
     .then(() => {
         console.log('Connected to database successfully');
