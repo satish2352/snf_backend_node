@@ -12,35 +12,41 @@ const mongoURI = process.env.MONGO_URI;
 
 // const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/'
 // const mongoURI = 'mongodb+srv://snfbackend:7SkTLYORShY2XQ1B@cluster0.bsuehxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-// mongoose.connect(mongoURI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     serverSelectionTimeoutMS: 100000, // Increase timeout to 90 seconds
-//     socketTimeoutMS: 0, // No socket timeout
-//     connectTimeoutMS: 0, // No connection timeout
-// })
-//     .then(() => {
-//         console.log('Connected to database successfully');
-//     })
-    
-//     .catch((err) => {
-//         console.error('Error connecting to database:', err);
-//     });
-
-
 mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 100000, // Increase timeout to 90 seconds
+    socketTimeoutMS: 0, // No socket timeout
+    connectTimeoutMS: 0, // No connection timeout
+})
+    .then(() => {
+        console.log('Connected to database successfully');
+    })
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB successfully');
-});
+    .catch((err) => {
+        console.error('Error connecting to database:', err);
+    });
+// async function connectToDatabase() {
+//     try {
+//         await mongoose.connect(mongoURI, {
+//             useNewUrlParser: true,
+//             useUnifiedTopology: true,
+//             serverSelectionTimeoutMS: 100000
+//             // Other options like serverSelectionTimeoutMS, etc.
+//         });
+//         console.log('Connected to MongoDB successfully');
+//         // Start using your models here
+//     } catch (error) {
+//         console.error('Error connecting to MongoDB:', error);
+//     }
+// }
 
-    
+// connectToDatabase();
 app.use(express.json());
+
+app.get('/one', (req, res) => {
+    res.send('running on localhost 8000');
+});
 // Serve uploaded images
 app.use('/uploads', express.static('uploads'));
 
