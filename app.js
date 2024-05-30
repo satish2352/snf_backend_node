@@ -26,21 +26,20 @@ const mongoURI = process.env.MONGO_URI;
 //     .catch((err) => {
 //         console.error('Error connecting to database:', err);
 //     });
-    async function connectToDatabase() {
-        try {
-            await mongoose.connect(mongoURI, {
-           
-                serverSelectionTimeoutMS: 100000
-                // Other options like serverSelectionTimeoutMS, etc.
-            });
-            console.log('Connected to MongoDB successfully');
-            // Start using your models here
-        } catch (error) {
-            console.error('Error connecting to MongoDB:', error);
-        }
-    }
+
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB successfully');
+});
+
     
-    connectToDatabase();
 app.use(express.json());
 // Serve uploaded images
 app.use('/uploads', express.static('uploads'));
