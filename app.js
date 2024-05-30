@@ -22,26 +22,25 @@ const mongoURI = process.env.MONGO_URI;
 //     .then(() => {
 //         console.log('Connected to database successfully');
 //     })
-
+    
 //     .catch((err) => {
 //         console.error('Error connecting to database:', err);
 //     });
-async function connectToDatabase() {
-    try {
-        await mongoose.connect("mongodb://snf2:snf2123@ac-tqclyww-shard-00-00.bsuehxw.mongodb.net:27017,ac-tqclyww-shard-00-01.bsuehxw.mongodb.net:27017,ac-tqclyww-shard-00-02.bsuehxw.mongodb.net:27017/?ssl=true&replicaSet=atlas-128kkf-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            serverSelectionTimeoutMS: 100000
-            // Other options like serverSelectionTimeoutMS, etc.
-        });
-        console.log('Connected to MongoDB successfully');
-        // Start using your models here
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
+    async function connectToDatabase() {
+        try {
+            await mongoose.connect(mongoURI, {
+           
+                serverSelectionTimeoutMS: 100000
+                // Other options like serverSelectionTimeoutMS, etc.
+            });
+            console.log('Connected to MongoDB successfully');
+            // Start using your models here
+        } catch (error) {
+            console.error('Error connecting to MongoDB:', error);
+        }
     }
-}
-
-connectToDatabase();
+    
+    connectToDatabase();
 app.use(express.json());
 // Serve uploaded images
 app.use('/uploads', express.static('uploads'));
